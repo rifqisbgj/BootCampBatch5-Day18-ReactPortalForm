@@ -28,7 +28,7 @@ const App = () => {
 
       <div style={OTHER_CONTENT_STYLES}>Other Content</div>
 
-      {/* <Employee /> */}
+      <Employee />
     </>
   );
 };

@@ -1,18 +1,17 @@
 import { Form, Field } from "react-final-form";
-// import { useSelector, useDispatch } from "react-redux";
-// import { addEmployee } from "./action";
+import { useDispatch } from "react-redux";
+import { addEmployee } from "./action";
 
 // membuat promise dengan nilai balik benar dengan memberikan timeout
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const FormComp = ({ onClose }) => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const onSubmit = async (values) => {
     await sleep(300);
+    // store input employee
+    await dispatch(addEmployee(values));
     onClose();
-    // dispatch(addEmployee(values));
-    //   memberikan alert dengan json value yang diberikan spacer bernilai 2
-    window.alert(JSON.stringify(values, 0, 2));
   };
   return (
     <Form
@@ -142,7 +141,7 @@ const FormComp = ({ onClose }) => {
             </label>
             <div className="col-sm-10">
               <Field
-                name="preferred-technology"
+                name="preferredTechnology"
                 component="input"
                 type="radio"
                 className="form-check-input"
@@ -150,7 +149,7 @@ const FormComp = ({ onClose }) => {
               />{" "}
               Front End <br />
               <Field
-                name="preferred-technology"
+                name="preferredTechnology"
                 component="input"
                 type="radio"
                 className="form-check-input"
@@ -159,7 +158,7 @@ const FormComp = ({ onClose }) => {
               Back End
               <br />
               <Field
-                name="preferred-technology"
+                name="preferredTechnology"
                 component="input"
                 type="radio"
                 className="form-check-input"
